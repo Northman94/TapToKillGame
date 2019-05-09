@@ -9,7 +9,11 @@ public class BallonManager : MonoBehaviour
 
     [SerializeField]
     private Transform _creationPoint = null;
-    private GameObject _balloonPrefab = null;
+    [SerializeField]
+    private GameObject _goodBalloonPrefab = null;
+    [SerializeField]
+    private GameObject _badBalloonPrefab = null;
+    [HideInInspector]
     private GameObject newBalloonInstance;
 
     private int balloonCurrentAmmmount = 0;
@@ -17,6 +21,8 @@ public class BallonManager : MonoBehaviour
     [SerializeField]
     private int balloonmaxPossibleAmmount = 10;
     private float balloonLifeTime = 7f;
+
+    private float randomValue;
 
     private void Start()
     {
@@ -26,9 +32,20 @@ public class BallonManager : MonoBehaviour
 
     public void Create()
     {
+        randomValue = Random.Range(1f, 10f);
+
         if (balloonCurrentAmmmount < balloonmaxPossibleAmmount)
         {
-            newBalloonInstance = Instantiate(_balloonPrefab, _creationPoint.position, _creationPoint.rotation);
+
+            if (randomValue > 5) 
+            {
+                newBalloonInstance = Instantiate(_goodBalloonPrefab, _creationPoint.position, _creationPoint.rotation);
+            }
+            else 
+            {
+                newBalloonInstance = Instantiate(_badBalloonPrefab, _creationPoint.position, _creationPoint.rotation);
+            }
+           
 
             ++balloonCurrentAmmmount;
 
@@ -45,3 +62,4 @@ public class BallonManager : MonoBehaviour
         --balloonCurrentAmmmount;
     }
 }
+

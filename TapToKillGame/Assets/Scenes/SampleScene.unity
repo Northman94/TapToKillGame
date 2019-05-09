@@ -197,7 +197,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6a225df1f6e94e4b916bcd5f97789a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _creationPoint: {fileID: 0}
+  _creationPoint: {fileID: 1803616015}
+  _goodBalloonPrefab: {fileID: 1873592420}
+  _badBalloonPrefab: {fileID: 1136787296}
   balloonmaxPossibleAmmount: 10
 --- !u!1 &222089251
 GameObject:
