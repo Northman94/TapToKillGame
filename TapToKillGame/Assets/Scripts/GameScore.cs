@@ -11,7 +11,6 @@ public class GameScore : MonoBehaviour
     //private bool w;
 
 
-
 	void Start () 
     {
         scoreText = GetComponent<Text>();
@@ -26,6 +25,6 @@ public class GameScore : MonoBehaviour
 
     public static void UpdateScore () 
     {
-        scoreText.text = "Score" + scoreNumb;
+        scoreText.text = "Score: " + scoreNumb;
 	}
 }
