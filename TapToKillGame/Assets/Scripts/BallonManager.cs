@@ -45,7 +45,6 @@ public class BallonManager : MonoBehaviour
             {
                 newBalloonInstance = Instantiate(_badBalloonPrefab, _creationPoint.position, _creationPoint.rotation);
             }
-           
 
             ++balloonCurrentAmmmount;
 
