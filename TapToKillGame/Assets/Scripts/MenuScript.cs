@@ -5,23 +5,31 @@ using UnityEngine.SceneManagement; //For Scenes Loading
 
 public class MenuScript : MonoBehaviour
 {
+    public static bool startGame = false;
     public static bool gameIsPaused = false;
+    public static GameObject startGameUI;
 
-    public GameObject pauseMenuUI;
-
-    //public GameObject settingsUI;
+    [SerializeField]
+    private GameObject pauseMenuUI;
 
 
     private void Awake()
     {
+        startGameUI = new GameObject();
+        startGameUI = FindObjectOfType<GameObject>();
+    }
+
+    private void Start()
+    {
+        startGameUI.SetActive(false);
+        Time.timeScale = 0f;
         pauseMenuUI.SetActive(false);
-        //settingsUI.SetActive(false);
     }
 
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if(Input.GetKeyDown(KeyCode.Escape) & startGame == true)
         {
             if (gameIsPaused)
             {
@@ -29,14 +37,11 @@ public class MenuScript : MonoBehaviour
             }
             else
             {
-                //settingsUI.SetActive(false);
                 Pause();
             }
         }
     }
 
-
-    #region Open/Close Menus
 
     public void Resume()
     {
@@ -51,23 +56,12 @@ public class MenuScript : MonoBehaviour
         Time.timeScale = 0f;
         gameIsPaused = true;
     }
-    /*
-    public void SettingMenuOpen()
+
+
+    public static void StarGame()
     {
-        pauseMenuUI.SetActive(false);
-        settingsUI.SetActive(true);
-        Time.timeScale = 0f;
-        gameIsPaused = true;
+        startGame = true;
     }
-
-    public void SettingsMenuClose()
-    {
-        settingsUI.SetActive(false);
-        Time.timeScale = 1f;
-        gameIsPaused = false;
-    }*/
-    #endregion
-
 
     public void QuitGame()
     {

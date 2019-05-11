@@ -11,7 +11,7 @@ public class BalloonInteraction : MonoBehaviour
 
     void Update ()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) & Time.timeScale !=0)
         {
             Vector3 pop = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             Collider2D coll = balloon.GetComponent<Collider2D>();
@@ -24,7 +24,7 @@ public class BalloonInteraction : MonoBehaviour
 
                 GameScore.AddScore(newScoreValue);
             }
-            else if (Input.touchCount == 1)
+            else if (Input.touchCount == 1 & Time.timeScale !=0)
             {
                 Vector3 wp = Camera.main.ScreenToWorldPoint(Input.GetTouch(0).position);
                 Vector2 touchPos = new Vector2(wp.x, wp.y);

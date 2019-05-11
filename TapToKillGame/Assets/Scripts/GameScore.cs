@@ -8,8 +8,6 @@ public class GameScore : MonoBehaviour
     private static Text scoreText;
     private static int scoreNumb = 0;
 
-    //private bool w;
-
 
 	void Start () 
     {

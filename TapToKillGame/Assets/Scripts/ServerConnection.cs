@@ -4,12 +4,18 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class ServerConnection : MonoBehaviour 
-{/*
+{
     private bool isServerAwailable = false;
+    [SerializeField]
     Server_Response server_Response;
-    private void Awake()
+
+   
+     private void Awake()
     {
         server_Response = new Server_Response();
+
+        server_Response = FindObjectOfType<Server_Response>();
+
         isServerConnetionValid();
     }
 
@@ -24,6 +30,11 @@ public class ServerConnection : MonoBehaviour
     {
         isServerAwailable = _status;
         Debug.Log("= - = - = - = - = - = - = - = - = - = - = - ServerStatusReceived:  " + isServerAwailable);
+
+        if (_status)
+        {
+            MenuScript.StarGame();
+        }
     }
-    */
+
 }
