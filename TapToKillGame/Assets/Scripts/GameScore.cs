@@ -2,16 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameScore : MonoBehaviour 
 {
     private static Text scoreText;
     private static int scoreNumb = 0;
 
+    private Scene scene;
 
-	void Start () 
+    void Start () 
     {
         scoreText = GetComponent<Text>();
+        scene = SceneManager.GetActiveScene();
         UpdateScore();
 	}
 
@@ -34,4 +37,12 @@ public class GameScore : MonoBehaviour
     {
         scoreText.text = "Score: " + scoreNumb;
 	}
+
+
+    public void RestartGame()
+    {
+        scoreNumb = 0;
+        UpdateScore();
+        SceneManager.LoadScene(scene.name);
+    }
 }
