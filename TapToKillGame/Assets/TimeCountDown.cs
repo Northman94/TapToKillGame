@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class TimeCountDown : MonoBehaviour 
 {
@@ -10,11 +11,13 @@ public class TimeCountDown : MonoBehaviour
     private float timeCountdown = 60;
     [SerializeField]
     private MenuScript menuScript;
-    
+
+    private Scene scene;
 
     void Start()
     {
         time = GetComponent<Text>();
+        scene = SceneManager.GetActiveScene();
     }
 
 
@@ -33,10 +36,13 @@ public class TimeCountDown : MonoBehaviour
         }
     }
 
-
     private void UpdateTime()
     {
         time.text = "Time: " + (int)timeCountdown;
     }
 
+    public void RestartGame()
+    {
+        SceneManager.LoadScene(scene.name);
+    }
 }

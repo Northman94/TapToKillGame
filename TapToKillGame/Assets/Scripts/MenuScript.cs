@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement; //For Scenes Loading
+
 
 public class MenuScript : MonoBehaviour
 {
