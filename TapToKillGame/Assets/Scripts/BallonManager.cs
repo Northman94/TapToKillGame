@@ -20,13 +20,13 @@ public class BallonManager : MonoBehaviour
 
     [SerializeField]
     private int balloonmaxPossibleAmmount = 10;
-    private float balloonLifeTime = 7f;
+    private float balloonLifeTime = 4f;
 
     private float randomValue;
 
     private void Start()
     {
-        InvokeRepeating("Create", 1f, Random.Range(0.05f, 2f));
+        InvokeRepeating("Create", 1f, Random.Range(0.03f, 1.5f));
     }
 
 
@@ -36,7 +36,7 @@ public class BallonManager : MonoBehaviour
 
         if (balloonCurrentAmmmount < balloonmaxPossibleAmmount)
         {
-
+            // Red or Yellow
             if (randomValue > 5) 
             {
                 newBalloonInstance = Instantiate(_goodBalloonPrefab, _creationPoint.position, _creationPoint.rotation);

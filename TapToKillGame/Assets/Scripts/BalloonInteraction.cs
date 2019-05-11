@@ -19,10 +19,10 @@ public class BalloonInteraction : MonoBehaviour
 
             if (coll.OverlapPoint(pop))
             {
+                chechBalloon();
                 Debug.Log("byMouseExplosion!!!");
-                Destroy(balloon, 0.1f);
 
-                GameScore.AddScore(newScoreValue);
+                Destroy(balloon, 0.1f);
             }
             else if (Input.touchCount == 1 & Time.timeScale !=0)
             {
@@ -31,14 +31,24 @@ public class BalloonInteraction : MonoBehaviour
 
                 if (coll == Physics2D.OverlapPoint(touchPos))
                 {
+                    chechBalloon();
                     Debug.Log("byFingerExplosion!");
+
                     Destroy(balloon, 0.1f);
-
-                    GameScore.AddScore(newScoreValue);
                 }
-
             }
+        }
+    }
 
+    private void chechBalloon()
+    {
+        if (balloon.tag == "Bad")
+        {
+            GameScore.SubstractScore(newScoreValue);
+        }
+        else if (balloon.tag == "Good")
+        {
+            GameScore.AddScore(newScoreValue);
         }
     }
 }

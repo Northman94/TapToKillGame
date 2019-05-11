@@ -21,6 +21,15 @@ public class GameScore : MonoBehaviour
         UpdateScore();
     }
 
+    public static void SubstractScore(int newScoreValue)
+    {
+        if (scoreNumb > 0)
+        {
+            scoreNumb -= newScoreValue;
+            UpdateScore();
+        }
+    }
+
     public static void UpdateScore () 
     {
         scoreText.text = "Score: " + scoreNumb;
