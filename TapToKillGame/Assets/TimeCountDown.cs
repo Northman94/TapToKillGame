@@ -8,6 +8,9 @@ public class TimeCountDown : MonoBehaviour
     private Text time;
     [SerializeField]
     private float timeCountdown = 60;
+    [SerializeField]
+    private MenuScript menuScript;
+    
 
     void Start()
     {
@@ -26,6 +29,7 @@ public class TimeCountDown : MonoBehaviour
         else
         {
             Time.timeScale = 0f;
+            menuScript.GameOver();
         }
     }
 

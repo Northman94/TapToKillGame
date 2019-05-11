@@ -5,31 +5,35 @@ using UnityEngine.SceneManagement; //For Scenes Loading
 
 public class MenuScript : MonoBehaviour
 {
-    public static bool startGame = false;
+    public  bool startGame = false;
     public static bool gameIsPaused = false;
-    public static GameObject startGameUI;
+    public GameObject startGameUI;
 
     [SerializeField]
     private GameObject pauseMenuUI;
 
+    public GameObject gameOverPanel;
+    private bool gameOverPanelActive = false;
 
-    private void Awake()
-    {
-        startGameUI = new GameObject();
-        startGameUI = FindObjectOfType<GameObject>();
-    }
 
     private void Start()
     {
-        startGameUI.SetActive(false);
         Time.timeScale = 0f;
         pauseMenuUI.SetActive(false);
+        gameOverPanel.SetActive(false);
+        //startGameUI.SetActive(false);
     }
 
 
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Escape) & startGame == true)
+        if (startGame == true)
+        {
+            startGameUI.SetActive(true);
+            startGame = false;
+        }
+
+        if (Input.GetKeyDown(KeyCode.Escape) & startGame == true & gameOverPanelActive == false)
         {
             if (gameIsPaused)
             {
@@ -58,10 +62,17 @@ public class MenuScript : MonoBehaviour
     }
 
 
-    public static void StarGame()
+    public void StartGame()
     {
         startGame = true;
+        Debug.Log("Start GAME");
     }
+
+public void GameOver()
+    {
+        gameOverPanelActive = true;
+        gameOverPanel.SetActive(true);
+    } 
 
     public void QuitGame()
     {

@@ -8,7 +8,8 @@ public class ServerConnection : MonoBehaviour
     private bool isServerAwailable = false;
     [SerializeField]
     Server_Response server_Response;
-
+    [SerializeField]
+    private MenuScript menuScript;
    
      private void Awake()
     {
@@ -33,7 +34,7 @@ public class ServerConnection : MonoBehaviour
 
         if (_status)
         {
-            MenuScript.StarGame();
+            menuScript.StartGame();
         }
     }
 
