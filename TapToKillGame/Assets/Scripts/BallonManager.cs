@@ -16,10 +16,7 @@ public class BallonManager : MonoBehaviour
     [HideInInspector]
     private GameObject newBalloonInstance;
 
-    private int balloonCurrentAmmmount = 0;
-
     [SerializeField]
-    private int balloonmaxPossibleAmmount = 10;
     private float balloonLifeTime = 4f;
 
     private float randomValue;
@@ -34,8 +31,6 @@ public class BallonManager : MonoBehaviour
     {
         randomValue = Random.Range(1f, 10f);
 
-        if (balloonCurrentAmmmount < balloonmaxPossibleAmmount)
-        {
             // Red or Yellow
             if (randomValue > 5) 
             {
@@ -46,19 +41,14 @@ public class BallonManager : MonoBehaviour
                 newBalloonInstance = Instantiate(_badBalloonPrefab, _creationPoint.position, _creationPoint.rotation);
             }
 
-            ++balloonCurrentAmmmount;
-
-            Destroy();
-        }
+            DestroyObj();
     }
 
-    public void Destroy()
+    public void DestroyObj()
     {
         Destroy(newBalloonInstance, balloonLifeTime);
         //must be GameObj, never RigidBody
         //NEVER put on a prefab
-
-        --balloonCurrentAmmmount;
     }
 }
 

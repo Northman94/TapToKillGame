@@ -35,7 +35,7 @@ public class GameScore : MonoBehaviour
 
     public static void UpdateScore () 
     {
-        scoreText.text = "Score: " + scoreNumb;
+        scoreText.text = " " + scoreNumb;
 	}
 
 
